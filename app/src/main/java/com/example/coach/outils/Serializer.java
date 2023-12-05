@@ -11,25 +11,25 @@ import android.content.Context;
 
 /**
  * Classe qui permet de serialiser et deserialiser des objets
- * @author Emds
  *
  */
 public abstract class Serializer {
 
     /**
      * Serialisation d'un objet
+     *
      * @param filename
      * @param object
      */
     public static void serialize(String filename, Object object, Context context) {
         try {
-            FileOutputStream file = context.openFileOutput(filename, Context.MODE_PRIVATE) ;
+            FileOutputStream file = context.openFileOutput(filename, Context.MODE_PRIVATE);
             ObjectOutputStream oos;
             try {
                 oos = new ObjectOutputStream(file);
-                oos.writeObject(object) ;
-                oos.flush() ;
-                oos.close() ;
+                oos.writeObject(object);
+                oos.flush();
+                oos.close();
             } catch (IOException e) {
                 // erreur de serialisation
                 e.printStackTrace();
@@ -42,20 +42,21 @@ public abstract class Serializer {
 
     /**
      * Deserialisation d'un objet
+     *
      * @param filename
      * @param context
      * @return
      */
     public static Object deSerialize(String filename, Context context) {
         try {
-            FileInputStream file = context.openFileInput(filename) ;
+            FileInputStream file = context.openFileInput(filename);
             ObjectInputStream ois;
             try {
                 ois = new ObjectInputStream(file);
                 try {
-                    Object object = ois.readObject() ;
-                    ois.close() ;
-                    return object ;
+                    Object object = ois.readObject();
+                    ois.close();
+                    return object;
                 } catch (ClassNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -71,7 +72,6 @@ public abstract class Serializer {
             // fichier non trouve
             e.printStackTrace();
         }
-        return null ;
+        return null;
     }
-
 }
