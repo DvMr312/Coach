@@ -45,4 +45,8 @@ public abstract class MesOutils {
         return date.format(uneDate);
     }
 
+    public static String format2Decimal(float uneValeur){
+        return String.format("%.01f", uneValeur);
+    }
+
 }
